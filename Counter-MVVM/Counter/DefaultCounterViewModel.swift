@@ -8,7 +8,11 @@ protocol CounterViewModel: AnyObject {
 final class DefaultCounterViewModel: CounterViewModel {
     var updateCounterLabel: ((String) -> Void)?
 
-    private var counter = 0
+    private var counter = 0 {
+        didSet {
+            updateCounterLabel?("\(counter)")
+        }
+    }
 
     func decrementCounter() {
         counter -= 1

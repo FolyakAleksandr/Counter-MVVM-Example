@@ -10,7 +10,7 @@ final class DefaultCounterView: UIViewController {
 
     // MARK: - Private variables
 
-    var viewModel: CounterViewModel!
+    var viewModel: CounterViewModel?
 
     // MARK: - Life cycle
 
@@ -81,17 +81,17 @@ final class DefaultCounterView: UIViewController {
     }
 
     private func configureBindings() {
-        viewModel.updateCounterLabel = { [weak self] text in
+        viewModel?.updateCounterLabel = { [weak self] text in
             guard let self = self else { return }
             counterLabel.text = text
         }
     }
 
     @objc private func decrementButtonTapped() {
-        viewModel.decrementCounter()
+        viewModel?.decrementCounter()
     }
 
     @objc private func incrementButtonTapped() {
-        viewModel.incrementCounter()
+        viewModel?.incrementCounter()
     }
 }
